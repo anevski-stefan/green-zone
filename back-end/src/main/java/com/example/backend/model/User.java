@@ -8,7 +8,6 @@ import java.util.List;
 
 @Entity
 @Table(name="users")
-@AllArgsConstructor
 @NoArgsConstructor
 public class User {
     @Id
@@ -18,6 +17,7 @@ public class User {
     private String second_name;
     private String email;
     private Integer points = 0;
+    private String imagePath;
 
     @ElementCollection
     private List<String> interests;
@@ -33,5 +33,20 @@ public class User {
         this.first_name = first_name;
         this.second_name = second_name;
         this.email = email;
+    }
+
+    public User(String first_name, String second_name, String email, String imagePath) {
+        this.first_name = first_name;
+        this.second_name = second_name;
+        this.email = email;
+        this.imagePath = imagePath;
+    }
+
+    public User(String first_name, String second_name, String email, String imagePath, List<String> interests) {
+        this.first_name = first_name;
+        this.second_name = second_name;
+        this.email = email;
+        this.imagePath = imagePath;
+        this.interests = interests;
     }
 }
