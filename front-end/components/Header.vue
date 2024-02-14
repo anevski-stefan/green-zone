@@ -7,6 +7,7 @@ const route = useRoute();
 
 const navigation = [
   { name: 'Home', href: '/', current: route.name == 'index' },
+  { name: 'Posts', href: '/posts', current: route.name == 'posts' },
   { name: 'EcoChat', href: '/ecoChat', current: route.name == 'ecoChat' },
   { name: 'Where to recycle?', href: '/recyclePlace', current: route.name == 'recyclePlace' },
   { name: 'About us', href: '/aboutUs', current: route.name == 'aboutUs' },
