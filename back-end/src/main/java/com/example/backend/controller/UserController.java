@@ -16,9 +16,9 @@ public class UserController {
     private UserService userService;
 
     // Create a new user
-    @PostMapping
-    public User createUser(@RequestBody String name) {
-        User user = new User(name);
-        return userService.createUser(user);
-    }
+//    @PostMapping
+//    public User createUser(@RequestBody String name) {
+//        User user = new User(name);
+//        return userService.createUser(user);
+//    }
 }
