@@ -2,6 +2,8 @@
 
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import {useRoute} from "vue-router";
+
 
 const route = useRoute();
 
@@ -11,7 +13,8 @@ const navigation = [
   { name: 'EcoChat', href: '/ecoChat', current: route.name == 'ecoChat' },
   { name: 'Where to recycle?', href: '/recyclePlaces', current: route.name == 'recyclePlaces' },
   { name: 'About us', href: '/aboutUs', current: route.name == 'aboutUs' },
-  { name: 'Register', href: '/register', current: route.name == 'register' },
+  { name: 'Profile', href: '/profile', current: route.name == 'profile' },
+  { name: 'Logout', href: '/logout', current: route.name == 'logout' },
 
   //   TODO: Router below will be implemented after profile pages creation
   // { name: 'Profile', href: '/profile', current: route.name == 'profile' },
