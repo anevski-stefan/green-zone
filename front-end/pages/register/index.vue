@@ -1,27 +1,28 @@
 <template>
   <div>
-    <h1 class="text-4xl text-cenclassNameb-8 text-gray-900 uppercase tracking-wider mt-5">Login</h1>
-    <Login/>
+    <h1 class="text-4xl text-cenclassNameb-8 text-gray-900 uppercase tracking-wider mt-5">Register</h1>
+    <Register/>
   </div>
 </template>
 
 <script>
-import Login from "@/components/Login.vue";
+import Register from "@/components/Register.vue";
 
 export default {
   components: {
-    Login
+    Register
   },
+
   async fetch() {
     try {
-      const response = await this.$fetch('/users/login', {
+      const response = await this.$fetch('/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: 'email',
-          password: 'password'
+          first_name: "fname",
+          last_name: "lname"
         }),
       });
 
@@ -35,5 +36,5 @@ export default {
     }
   }
 };
-
 </script>
+
