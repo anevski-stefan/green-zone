@@ -1,22 +1,23 @@
 <template>
-
   <div class="container">
-    <div class="header bg-green-800 text-black flex justify-between p-2">
+    <div class="header text-black flex justify-between p-2" >
       <div class="logo flex items-center">
-        <img src="../public/images/posts/neom-HYtBA9xDyfg-unsplash.jpg" alt="profile_picture" class="w-12 h-12 mr-2">
-        <span class="logo-text text-xl font-bold">GreenZone</span>
+        <img src="../public/images/posts/profile_picture.png" alt="profile_picture" class="w-60 h-70 mr-2 rounded-full">
+<!--        <span class="logo-text text-xl font-bold">GreenZone</span>-->
       </div>
-      <div class="info text-right">
-        <p>Name: John</p>
-        <p>Lastname: Doe</p>
-        <p>Email: johndoe23@gmail.com</p>
-        <p>Interests: recycling, camping</p>
-        <p>Points: 25.5</p>
+      <div class="info bg-amber-100 rounded-lg p-6" style="margin-right: auto; border-radius: 6rem; padding-right: 30rem; margin-top: 6rem;">
+        <p class="text-left font-bold" style="padding: 25px;">
+          Name: John<br>
+          Lastname: Doe<br>
+          Email: johndoe23@gmail.com<br>
+          Interests: recycling, camping, hiking, gardening<br>
+          Points: 25.4<br>
+        </p>
       </div>
     </div>
 
-    <div class="content bg-green-300 p-4">
-      <p class="about-me text-white text-lg">
+    <div class="content bg-amber-100 p-4" style="border-radius: 6rem; margin-top: 4rem;">
+      <p class="about-me bg-amber-100 text-base" style="border-radius: 6rem;">
         About me:<br>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
         magna aliqua.
@@ -30,5 +31,16 @@
 </template>
 
 <style>
-/* Your style code here */
+.container {
+  background-color: rgb(150, 192, 177);
+  position: relative;
+}
+
+.profile-picture {
+  width: 208px;
+  height: 210px;
+  position: absolute;
+  top: 205px;
+  left: 70px;
+}
 </style>
