@@ -32,5 +32,9 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("User was not found!");
         }
     }
-}
 
+    @Override
+    public User findByEmail(String email) {
+        return this.userRepository.findByEmail(email);
+    }
+}
