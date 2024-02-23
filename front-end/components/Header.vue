@@ -14,6 +14,8 @@ const navigation = [
   { name: 'Where to recycle?', href: '/recyclePlaces', current: route.name == 'recyclePlaces' },
   { name: 'About us', href: '/aboutUs', current: route.name == 'aboutUs' },
   { name: 'Profile', href: '/profile', current: route.name == 'profile' },
+  { name: 'Login', href: '/login', current: route.name == 'login' },
+  { name: 'Register', href: '/register', current: route.name == 'register' },
 ]
 
 </script>
