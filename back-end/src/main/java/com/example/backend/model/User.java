@@ -21,6 +21,9 @@ public class User {
     private String password;
     private String aboutMeText;
 
+    @Column(columnDefinition = "integer default 0")
+    private String points;
+
     public User(String name) {
         this.name = name;
     }
@@ -30,11 +33,13 @@ public class User {
         this.email = email;
         this.password = password;
         this.aboutMeText = aboutMeText;
+        this.points = String.valueOf(0);
     }
 
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.points = String.valueOf(0);
     }
 }

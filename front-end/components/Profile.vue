@@ -1,34 +1,62 @@
 <template>
-
-  <div class="container">
-    <div class="header bg-green-800 text-black flex justify-between p-2">
-      <div class="logo flex items-center">
-        <img src="../public/images/posts/neom-HYtBA9xDyfg-unsplash.jpg" alt="profile_picture" class="w-12 h-12 mr-2">
-        <span class="logo-text text-xl font-bold">GreenZone</span>
-      </div>
-      <div class="info text-right">
-        <p>Name: John</p>
-        <p>Lastname: Doe</p>
-        <p>Email: johndoe23@gmail.com</p>
-        <p>Interests: recycling, camping</p>
-        <p>Points: 25.5</p>
+  <div>
+    <div v-if="loading || !user" class="absolute inset-0 flex justify-center items-center">
+      <p class="text-xl font-semibold">Loading...</p>
+    </div>
+    <div v-else-if="user" class="bg-white rounded-lg shadow-lg overflow-hidden max-w-4xl mx-auto">
+      <div class="p-8">
+        <div class="flex items-center">
+          <img src="/images/posts/profile_picture.png" alt="profile-picture" class="w-24 h-24 rounded-full mr-6">
+          <div>
+            <p class="text-lg font-semibold">Name: {{ user.name }}</p>
+            <p class="text-sm text-gray-600">Email: {{ user.email }}</p>
+            <p class="text-sm text-gray-600">Points: {{ user.points }}</p>
+          </div>
+        </div>
+        <div class="mt-6" v-if="user.aboutMeText">
+          <h2 class="text-lg font-semibold mb-2">About me:</h2>
+          <p class="text-sm text-gray-700">{{ user.aboutMeText }}</p>
+        </div>
+        <div class="mt-6" v-else>
+          <p class="text-sm text-gray-700">No bio available</p>
+        </div>
       </div>
     </div>
-
-    <div class="content bg-green-300 p-4">
-      <p class="about-me text-white text-lg">
-        About me:<br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <Profile v-if="profile" :user="profile"/>
+    <div v-else class="flex justify-center items-center mt-[-50vh]">
+      <p class="text-xl font-semibold">Loading...</p>
     </div>
+
   </div>
 </template>
 
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      user: null,
+      loading: true
+    };
+  },
+  mounted() {
+    axios.get('http://localhost:8080/users/user/1')
+        .then(response => {
+          this.user = response.data;
+          this.loading = false; // Set loading to false when data is loaded
+          console.log("User: ", response.data)
+        })
+        .catch(error => {
+          console.error('Error fetching user data:', error);
+        });
+  }
+};
+</script>
+
 <style>
-/* Your style code here */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
 </style>

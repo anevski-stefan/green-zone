@@ -1,18 +1,25 @@
 <template>
-  <div class="login-form">
-    <h2>Login</h2>
-    <form @submit.prevent="login">
-      <div class="form-group">
-        <label for="username">Username or Email</label>
-        <input type="text" id="username" v-model="credentials.username" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="credentials.password" required>
-      </div>
-      <button type="submit">Login</button>
-      <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
-    </form>
+  <div class="flex justify-center items-center">
+    <div class="w-full max-w-md">
+      <form @submit.prevent="login" class="shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <h1 class="text-4xl uppercase tracking-wider text-center my-5">Login</h1>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username or Email</label>
+          <input v-model="credentials.username" id="username" type="text" placeholder="Username or Email" required
+                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+          <input v-model="credentials.password" id="password" type="password" placeholder="Password" required
+                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <button type="submit"
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+          Login
+        </button>
+        <div v-if="errorMessage" class="text-red-500 text-xs mt-2">{{ errorMessage }}</div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -55,44 +62,4 @@ export default {
 </script>
 
 <style scoped>
-.login-form {
-  max-width: 400px;
-  margin: auto;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-input {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: 1px solid #FEFAE4;
-  border-radius: 4px;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: #285C49;
-  color: #FEFAE4;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #285C49;
-}
-
-.error-message {
-  color: red;
-  margin-top: 0.5rem;
-}
 </style>

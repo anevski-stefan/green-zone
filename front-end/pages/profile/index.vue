@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1 class="text-4xl text-center mb-8 text-gray-900 uppercase tracking-wider mt-5">Profile</h1>
+  <div class="bg-gray-100 min-h-screen">
+    <h1 class="text-4xl text-center mb-8 text-gray-900 uppercase tracking-wider">Profile</h1>
     <Profile/>
   </div>
 </template>
@@ -12,5 +12,5 @@ export default {
   components: {
     Profile
   }
-};
+}
 </script>
