@@ -1,46 +1,62 @@
 <template>
-  <div class="container">
-    <div class="header text-black flex justify-between p-2" >
-      <div class="logo flex items-center">
-        <img src="../public/images/posts/profile_picture.png" alt="profile_picture" class="w-60 h-70 mr-2 rounded-full">
-<!--        <span class="logo-text text-xl font-bold">GreenZone</span>-->
+  <div>
+    <div v-if="loading || !user" class="absolute inset-0 flex justify-center items-center">
+      <p class="text-xl font-semibold">Loading...</p>
+    </div>
+    <div v-else-if="user" class="bg-white rounded-lg shadow-lg overflow-hidden max-w-4xl mx-auto">
+      <div class="p-8">
+        <div class="flex items-center">
+          <img src="/images/posts/profile_picture.png" alt="profile-picture" class="w-24 h-24 rounded-full mr-6">
+          <div>
+            <p class="text-lg font-semibold">Name: {{ user.name }}</p>
+            <p class="text-sm text-gray-600">Email: {{ user.email }}</p>
+            <p class="text-sm text-gray-600">Points: {{ user.points }}</p>
+          </div>
+        </div>
+        <div class="mt-6" v-if="user.aboutMeText">
+          <h2 class="text-lg font-semibold mb-2">About me:</h2>
+          <p class="text-sm text-gray-700">{{ user.aboutMeText }}</p>
+        </div>
+        <div class="mt-6" v-else>
+          <p class="text-sm text-gray-700">No bio available</p>
+        </div>
       </div>
-      <div class="info bg-amber-100 rounded-lg p-6" style="margin-right: auto; border-radius: 6rem; padding-right: 30rem; margin-top: 6rem;">
-        <p class="text-left font-bold" style="padding: 25px;">
-          Name: John<br>
-          Lastname: Doe<br>
-          Email: johndoe23@gmail.com<br>
-          Interests: recycling, camping, hiking, gardening<br>
-          Points: 25.4<br>
-        </p>
-      </div>
+    </div>
+    <div v-else class="flex justify-center items-center mt-[-50vh]">
+      <p class="text-xl font-semibold">Loading...</p>
     </div>
 
-    <div class="content bg-amber-100 p-4" style="border-radius: 6rem; margin-top: 4rem;">
-      <p class="about-me bg-amber-100 text-base" style="border-radius: 6rem;">
-        About me:<br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <Profile v-if="profile" :user="profile"/>
-    </div>
   </div>
 </template>
 
-<style>
-.container {
-  background-color: rgb(150, 192, 177);
-  position: relative;
-}
+<script>
+import axios from 'axios';
 
-.profile-picture {
-  width: 208px;
-  height: 210px;
-  position: absolute;
-  top: 205px;
-  left: 70px;
+export default {
+  data() {
+    return {
+      user: null,
+      loading: true
+    };
+  },
+  mounted() {
+    axios.get('http://localhost:8080/users/user/1')
+        .then(response => {
+          this.user = response.data;
+          this.loading = false; // Set loading to false when data is loaded
+          console.log("User: ", response.data)
+        })
+        .catch(error => {
+          console.error('Error fetching user data:', error);
+        });
+  }
+};
+</script>
+
+<style>
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 </style>
