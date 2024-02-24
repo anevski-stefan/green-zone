@@ -16,30 +16,32 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String username;
+    @Column(nullable = false, unique = true, length = 50)
     private String email;
+    @Column(nullable = false, length = 50)
     private String password;
     private String aboutMeText;
 
     @Column(columnDefinition = "integer default 0")
-    private String points;
+    private Integer points;
 
     public User(String name) {
-        this.name = name;
+        this.username = name;
     }
 
-    public User(String name, String email, String password, String aboutMeText) {
-        this.name = name;
+    public User(String username, String email, String password, String aboutMeText) {
+        this.username = username;
         this.email = email;
         this.password = password;
         this.aboutMeText = aboutMeText;
-        this.points = String.valueOf(0);
+        this.points = 0;
     }
 
-    public User(String name, String email, String password) {
-        this.name = name;
+    public User(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
-        this.points = String.valueOf(0);
+        this.points = 0;
     }
 }
