@@ -5,6 +5,7 @@ import com.example.backend.repository.UserRepository;
 import com.example.backend.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -36,5 +37,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByEmail(String email) {
         return this.userRepository.findByEmail(email);
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return this.userRepository.findById(id);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return this.userRepository.findAll();
     }
 }
