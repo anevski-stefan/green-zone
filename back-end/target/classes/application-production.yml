@@ -1,15 +1,15 @@
 spring:
-  profiles:
-    active: production
   application:
     name: order-api
   jpa:
     hibernate:
       ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-    url: jdbc:postgresql://localhost:5432/greenzone
+    url: jdbc:postgresql://dpg-cnblg6ocmk4c73ahos00-a.oregon-postgres.render.com/greenzone
     username: greenzone
-    password: greenzone
+    password: MYQlnDxmQ4mDGsNJKy0U7XSTApu8VNby
+    driver-class-name: org.postgresql.Driver
 
 app:
   jwt:
@@ -22,9 +22,7 @@ app:
 logging:
   level:
     org.springframework.security: DEBUG
-
-
-
-
-
-
+server:
+  tomcat:
+    accesslog:
+      enabled: true

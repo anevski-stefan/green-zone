@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: production
   application:
     name: order-api
   jpa:
@@ -20,3 +22,9 @@ app:
 logging:
   level:
     org.springframework.security: DEBUG
+
+
+
+
+
+
