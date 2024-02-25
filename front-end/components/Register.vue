@@ -57,9 +57,10 @@ export default {
   },
   methods: {
     async register() {
+      const config = useRuntimeConfig();
       try {
         // const response = await axios.post('http://localhost:8080/auth/signup', this.credentials); // Local
-        const response = await axios.post('https://green-zone-api.onrender.com/auth/signup', this.credentials);
+        const response = await axios.post(config.public.production_base_url+'/auth/signup', this.credentials);
         if (response.status === 201) {
           const {accessToken, user} = response.data;
 
