@@ -1,0 +1,1 @@
+import{O as s,P as u}from"./entry.GbTm1XBm.js";async function k(){const e=s("accessToken"),o=s("user"),a=c=>!0,t=c=>!0,n=!!e.value&&a(e.value),i=!!o.value&&t(o.value);if(n&&i)return u("/")}export{k as default};

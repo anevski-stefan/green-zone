@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3696eb30-c61d-47a1-840e-22e2ca874390" name="Changes" comment="green-zone: moved Dockerfile into back-end directory">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back-end/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/back-end/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/components/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/components/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/components/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/components/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/components/Profile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front-end/components/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/front-end/components/Register.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +64,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feature/green-zone/hosting",
+    "git-widget-placeholder": "feature/green-zone/refactor-fe",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Stefan/Desktop/green-zone/back-end",
@@ -94,6 +96,7 @@
       <workItem from="1708111810009" duration="2611000" />
       <workItem from="1708876350216" duration="1962000" />
       <workItem from="1708878541390" duration="229000" />
+      <workItem from="1708890841440" duration="9000" />
     </task>
     <task id="LOCAL-00001" summary="green-zone: Add Dockerfile">
       <option name="closed" value="true" />
