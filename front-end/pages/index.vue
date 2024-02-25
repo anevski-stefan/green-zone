@@ -10,7 +10,7 @@
           </svg>
           <h2 class="text-xl font-semibold mb-2">Find Recycling Centers</h2>
           <p class="text-center">Locate nearby recycling centers and drop-off points.</p>
-          <router-link :to="{ path: '/recyclePlaces', query: { current: 'recyclePlaces' } }" @click.native="reloadPage" class="mt-4 bg-white text-blue-500 font-semibold py-2 px-4 rounded-full hover:bg-blue-100 transition duration-300">Explore</router-link>
+          <router-link :to="{ path: '/recyclePlaces', query: { current: 'recyclePlaces' } }" @click.native="reloadPage('/recyclePlaces')" class="mt-4 bg-white text-blue-500 font-semibold py-2 px-4 rounded-full hover:bg-blue-100 transition duration-300">Explore</router-link>
         </div>
         <div class="flex flex-col justify-center items-center bg-green-500 text-white p-6 rounded-lg shadow-md">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" viewBox="0 0 20 20" fill="currentColor">
@@ -18,7 +18,7 @@
           </svg>
           <h2 class="text-xl font-semibold mb-2">Recycling Tips</h2>
           <p class="text-center">Learn useful tips and tricks for effective recycling.</p>
-          <router-link :to="{ path: '/posts', query: { current: 'posts' } }" @click.native="reloadPage" class="mt-4 bg-white text-green-500 font-semibold py-2 px-4 rounded-full hover:bg-green-100 transition duration-300">Discover</router-link>
+          <router-link :to="{ path: '/posts', query: { current: 'posts' } }" @click.native="reloadPage('/posts')" class="mt-4 bg-white text-green-500 font-semibold py-2 px-4 rounded-full hover:bg-green-100 transition duration-300">Discover</router-link>
         </div>
       </div>
     </div>
@@ -29,8 +29,8 @@
 export default {
   name: 'HomePage',
   methods: {
-    reloadPage() {
-      this.$router.push({ path: '/recyclePlaces', query: { current: 'recyclePlaces' } });
+    reloadPage(routePath) {
+      this.$router.push({ path: routePath, query: { current: routePath } });
 
       setTimeout(() => {
         window.location.reload();
