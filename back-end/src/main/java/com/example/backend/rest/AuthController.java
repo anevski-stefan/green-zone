@@ -78,7 +78,6 @@ public class AuthController {
         user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
         user.setName(signUpRequest.getName());
         user.setEmail(signUpRequest.getEmail());
-        user.setAboutMe(signUpRequest.getAboutMe());
         user.setRole(WebSecurityConfig.USER);
         user.setPoints(signUpRequest.getPoints());
         return user;

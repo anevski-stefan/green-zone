@@ -23,8 +23,6 @@ public class SignUpRequest {
     @Schema(example = "user3@mycompany.com")
     @Email
     private String email;
-    @Schema(example = "some text")
-    private String aboutMe;
     @Schema(example = "0")
     private Integer points;
 }
