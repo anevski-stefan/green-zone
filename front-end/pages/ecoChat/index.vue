@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Chatbot from "@/components/Chatbot.vue";
+import Chatbot from "@/components/ChatBot.vue";
 
 definePageMeta({
   middleware: 'eco-chat-middleware'
