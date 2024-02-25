@@ -1,0 +1,1 @@
+import{N as s,O as u}from"./entry.P8GpHCGp.js";async function k(){const e=s("accessToken"),o=s("user"),a=c=>!0,t=c=>!0,n=!!e.value&&a(e.value),i=!!o.value&&t(o.value);if(n&&i)return u("/")}export{k as default};
