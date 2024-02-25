@@ -36,9 +36,11 @@ export default {
   },
   methods: {
     async login() {
+      const config = useRuntimeConfig();
+
       try {
         // const response = await axios.post('http://localhost:8080/auth/authenticate', { // Local
-        const response = await axios.post('https://green-zone-api.onrender.com/auth/authenticate', {
+        const response = await axios.post(config.public.production_base_url+'/auth/authenticate', {
           username: this.username,
           password: this.password
         });
@@ -60,6 +62,7 @@ export default {
       }
     }
   }
+
 };
 </script>
 

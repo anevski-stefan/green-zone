@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:hidden">
-          <DisclosureButton class="relative inline-flex items-center justify-center rounded-md p-2">
+          <DisclosureButton class="relative inline-flex items-center justify-center rounded-md p-2 text-white">
             <span class="absolute -inset-0.5"/>
             <span class="sr-only">Open main menu</span>
             <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true"/>
@@ -90,11 +90,13 @@ const navigation = [
 ];
 
 const logout = async () => {
+  const config = useRuntimeConfig();
+
   try {
     const accessToken = getCookie('accessToken');
 
     // const response = await fetch('http://localhost:8080/auth/logout', { // Local
-    const response = await fetch('https://green-zone-api.onrender.com/auth/logout', {
+    const response = await fetch(config.public.production_base_url+'/auth/logout', {
       method: 'POST',
       credentials: 'same-origin',
       headers: {
