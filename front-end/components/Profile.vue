@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 
 export default {
   data() {
@@ -43,7 +42,7 @@ export default {
     if (userCookie) {
       next();
     } else {
-      next({ path: '/login' });
+      next({path: '/login'});
     }
   },
   mounted() {
@@ -61,18 +60,14 @@ export default {
     },
     async logout() {
       try {
-        // Clear access token cookie
         document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
-        // Clear user cookie
         document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
-        // Redirect to the login page or any desired route
         this.$router.push('/login');
         window.location.reload();
       } catch (error) {
         console.error('Logout failed:', error);
-        // Handle logout failure if needed
       }
     }
   }

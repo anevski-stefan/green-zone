@@ -4,9 +4,12 @@
       <div class="flex-grow p-4 overflow-y-auto bg-gray-200">
         <div v-for="(message, index) in messages" :key="index" class="mb-4">
           <div v-if="message.type === 'user'" class="text-right flex justify-end items-center">
-            <div class="inline-block bg-blue-500 text-white rounded-lg p-2 max-w-md text-left">{{ message.content }}</div>
-            <!-- Add the image here for user messages -->
-            <img v-if="message.image" :src="message.image" alt="profile-picture" class="rounded-full w-8 h-8 inline-block ml-2">
+            <div class="inline-block bg-blue-500 text-white rounded-lg p-2 max-w-md text-left">{{
+                message.content
+              }}
+            </div>
+            <img v-if="message.image" :src="message.image" alt="profile-picture"
+                 class="rounded-full w-8 h-8 inline-block ml-2">
           </div>
           <div v-else class="text-left">
             <div class="inline-block bg-gray-300 rounded-lg p-2 max-w-md" v-html="message.content"></div>
@@ -15,7 +18,8 @@
       </div>
       <div class="bg-gray-200 p-4">
         <div v-if="!answered">
-          <button v-for="(qa, index) in questionsAndAnswers" :key="index" @click="askQuestion(index)" class="w-full p-2 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:border-blue-500 hover:bg-gray-100">
+          <button v-for="(qa, index) in questionsAndAnswers" :key="index" @click="askQuestion(index)"
+                  class="w-full p-2 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:border-blue-500 hover:bg-gray-100">
             {{ qa.question }}
           </button>
         </div>
@@ -72,7 +76,7 @@ export default {
   },
   methods: {
     askQuestion(index) {
-      const { question, answer } = this.questionsAndAnswers[index];
+      const {question, answer} = this.questionsAndAnswers[index];
       if (question) {
         this.messages.push({type: 'user', content: question, image: '/images/posts/profile_picture.png'});
         this.answered = true;

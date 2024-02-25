@@ -42,12 +42,10 @@ export default {
           password: this.password
         });
 
-        // Save access token and user data in cookies
         document.cookie = `accessToken=${response.data.accessToken}; path=/`;
         document.cookie = `user=${JSON.stringify(response.data.user)}; path=/`;
 
-        // Handle successful login
-        // For example, redirect to another page
+
         this.$router.push('/');
         window.location.reload();
       } catch (error) {

@@ -1,7 +1,7 @@
 <script setup>
 import Post from "~/components/Post.vue";
 
-const {data:posts} = await useAsyncData('posts', () =>
+const {data: posts} = await useAsyncData('posts', () =>
     queryContent('/posts').find()
 )
 </script>

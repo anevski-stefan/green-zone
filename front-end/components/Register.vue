@@ -4,7 +4,8 @@
       <form @submit.prevent="register" class="shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Username</label>
-          <input v-model="credentials.username" id="username" name="username" type="text" placeholder="Username" required
+          <input v-model="credentials.username" id="username" name="username" type="text" placeholder="Username"
+                 required
                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
         <div class="mb-4">
@@ -14,7 +15,8 @@
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
-          <input v-model="credentials.password" id="password" name="password" type="password" placeholder="Password" required
+          <input v-model="credentials.password" id="password" name="password" type="password" placeholder="Password"
+                 required
                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
         <div class="mb-4">
@@ -24,7 +26,8 @@
         </div>
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="aboutMe">About Me (max 255 characters)</label>
-          <textarea v-model="credentials.aboutMe" id="aboutMe" name="about-me" placeholder="Tell us about yourself..." required
+          <textarea v-model="credentials.aboutMe" id="aboutMe" name="about-me" placeholder="Tell us about yourself..."
+                    required
                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
         </div>
         <button type="submit"
@@ -46,10 +49,10 @@ export default {
         username: '',
         email: '',
         password: '',
-        name: '', // Added name field
-        aboutMe: '' // Added aboutMe field
+        name: '',
+        aboutMe: ''
       },
-      errorMessage: '' // Define errorMessage in data
+      errorMessage: ''
     };
   },
   methods: {
@@ -57,7 +60,7 @@ export default {
       try {
         const response = await axios.post('http://localhost:8080/auth/signup', this.credentials);
         if (response.status === 201) {
-          const { accessToken, user } = response.data;
+          const {accessToken, user} = response.data;
 
           document.cookie = `accessToken=${accessToken}; path=/`;
           document.cookie = `user=${JSON.stringify(user)}; path=/`;

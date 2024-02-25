@@ -7,42 +7,57 @@
         </div>
         <div class="hidden sm:block">
           <div class="flex space-x-4">
-            <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-green-800 text-white' : 'text-gray-300 hover:bg-green-800 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+            <a v-for="item in navigation" :key="item.name" :href="item.href"
+               :class="[item.current ? 'bg-green-800 text-white' : 'text-gray-300 hover:bg-green-800 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']"
+               :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
             <template v-if="hasUserCookie && hasAccessToken">
-              <a :href="profileLink" class="text-gray-300 hover:bg-green-800 hover:text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="route.name === 'profile' ? 'page' : undefined">Profile</a>
-              <button @click="logout" class="text-gray-300 hover:bg-green-800 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logout</button>
+              <a :href="profileLink"
+                 class="text-gray-300 hover:bg-green-800 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                 :aria-current="route.name === 'profile' ? 'page' : undefined">Profile</a>
+              <button @click="logout"
+                      class="text-gray-300 hover:bg-green-800 hover:text-white rounded-md px-3 py-2 text-sm font-medium">
+                Logout
+              </button>
             </template>
-            <!-- Include Login and Register links if user is not logged in -->
             <template v-else-if="isAuthenticated">
-              <a href="/login" class="text-gray-300 hover:bg-green-800 hover:text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="route.name === 'login' ? 'page' : undefined">Login</a>
-              <a href="/register" class="text-gray-300 hover:bg-green-800 hover:text-white rounded-md px-3 py-2 text-sm font-medium" :aria-current="route.name === 'register' ? 'page' : undefined">Register</a>
+              <a href="/login"
+                 class="text-gray-300 hover:bg-green-800 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                 :aria-current="route.name === 'login' ? 'page' : undefined">Login</a>
+              <a href="/register"
+                 class="text-gray-300 hover:bg-green-800 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                 :aria-current="route.name === 'register' ? 'page' : undefined">Register</a>
             </template>
           </div>
         </div>
-        <!-- Mobile menu button -->
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:hidden">
           <DisclosureButton class="relative inline-flex items-center justify-center rounded-md p-2">
-            <span class="absolute -inset-0.5" />
+            <span class="absolute -inset-0.5"/>
             <span class="sr-only">Open main menu</span>
-            <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
-            <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true" />
+            <Bars3Icon v-if="!open" class="block h-6 w-6" aria-hidden="true"/>
+            <XMarkIcon v-else class="block h-6 w-6" aria-hidden="true"/>
           </DisclosureButton>
         </div>
       </div>
     </div>
 
-    <!-- Mobile menu panel -->
     <DisclosurePanel class="sm:hidden">
       <div class="space-y-1 px-2 pb-3 pt-2">
-        <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-green-800 text-white' : 'text-gray-300 hover:bg-green-800 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
-        <!-- Include Logout button if user is logged in -->
+        <a v-for="item in navigation" :key="item.name" :href="item.href"
+           :class="[item.current ? 'bg-green-800 text-white' : 'text-gray-300 hover:bg-green-800 hover:text-white', 'block rounded-md px-3 py-2 text-base font-medium']"
+           :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
         <template v-if="hasUserCookie && hasAccessToken">
-          <button @click="logout" class="text-gray-300 hover:bg-green-800 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Logout</button>
+          <button @click="logout"
+                  class="text-gray-300 hover:bg-green-800 hover:text-white block rounded-md px-3 py-2 text-base font-medium">
+            Logout
+          </button>
         </template>
-        <!-- Include Login and Register links if user is not logged in -->
         <template v-else-if="isAuthenticated">
-          <a href="/login" class="text-gray-300 hover:bg-green-800 hover:text-white block rounded-md px-3 py-2 text-base font-medium" :aria-current="route.name === 'login' ? 'page' : undefined">Login</a>
-          <a href="/register" class="text-gray-300 hover:bg-green-800 hover:text-white block rounded-md px-3 py-2 text-base font-medium" :aria-current="route.name === 'register' ? 'page' : undefined">Register</a>
+          <a href="/login"
+             class="text-gray-300 hover:bg-green-800 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+             :aria-current="route.name === 'login' ? 'page' : undefined">Login</a>
+          <a href="/register"
+             class="text-gray-300 hover:bg-green-800 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+             :aria-current="route.name === 'register' ? 'page' : undefined">Register</a>
         </template>
       </div>
     </DisclosurePanel>
@@ -50,10 +65,10 @@
 </template>
 
 <script setup>
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
-import { useRoute } from "vue-router";
-import { useCookie } from 'nuxt/app'
+import {Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/vue'
+import {Bars3Icon, XMarkIcon} from '@heroicons/vue/24/outline'
+import {useRoute} from "vue-router";
+import {useCookie} from 'nuxt/app'
 
 const accessTokenCookie = useCookie('accessToken');
 const userCookie = useCookie("user");
@@ -65,20 +80,17 @@ const isAuthenticated = () => {
   return hasUserCookie && hasUserCookie;
 }
 
-// Define navigation links
 const route = useRoute();
 const navigation = [
-  { name: 'Home', href: '/', current: route.name == 'index' },
-  { name: 'Posts', href: '/posts', current: route.name == 'posts' },
-  { name: 'EcoChat', href: '/ecoChat', current: route.name == 'ecoChat' },
-  { name: 'Where to recycle?', href: '/recyclePlaces', current: route.name == 'recyclePlaces' },
-  { name: 'About us', href: '/aboutUs', current: route.name == 'aboutUs' },
+  {name: 'Home', href: '/', current: route.name == 'index'},
+  {name: 'Posts', href: '/posts', current: route.name == 'posts'},
+  {name: 'EcoChat', href: '/ecoChat', current: route.name == 'ecoChat'},
+  {name: 'Where to recycle?', href: '/recyclePlaces', current: route.name == 'recyclePlaces'},
+  {name: 'About us', href: '/aboutUs', current: route.name == 'aboutUs'},
 ];
 
-// Define logout function
 const logout = async () => {
   try {
-    // Retrieve access token from wherever it's stored (e.g., cookies)
     const accessToken = getCookie('accessToken');
 
     const response = await fetch('http://localhost:8080/auth/logout', {
@@ -91,24 +103,18 @@ const logout = async () => {
     });
 
     if (response.ok) {
-      // Logout successful
-      // Clear any user-related data (e.g., cookies, local storage)
       document.cookie = 'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
       document.cookie = 'user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-      // Redirect to homepage
       window.location.href = '/';
       window.location.reload();
     } else {
-      // Logout failed
       console.error('Logout failed');
     }
   } catch (error) {
-    // Handle error
     console.error('Error during logout:', error);
   }
 }
 
-// Define getCookie function
 const getCookie = (name) => {
   const value = `; ${document.cookie}`;
   const parts = value.split(`; ${name}=`);

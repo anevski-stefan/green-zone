@@ -1,4 +1,4 @@
-import { useCookie } from 'nuxt/app';
+import {useCookie} from 'nuxt/app';
 
 export default async function () {
     const accessTokenCookie = useCookie('accessToken');
@@ -18,7 +18,6 @@ export default async function () {
     const isAuthenticated = hasValidAccessToken && hasValidUserCookie;
 
     if (isAuthenticated) {
-        // Redirect to login page if not authenticated
         return navigateTo('/');
     }
 }
