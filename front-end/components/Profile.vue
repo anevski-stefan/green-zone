@@ -13,13 +13,6 @@
             <p class="text-sm text-gray-600">Points: {{ user.points }}</p>
           </div>
         </div>
-        <div class="mt-6" v-if="user.aboutMe">
-          <h2 class="text-lg font-semibold mb-2">About me:</h2>
-          <p class="text-sm text-gray-700">{{ user.aboutMe }}</p>
-        </div>
-        <div class="mt-6" v-else>
-          <p class="text-sm text-gray-700">No bio available</p>
-        </div>
       </div>
     </div>
     <div v-else class="flex justify-center items-center mt-[-50vh]">

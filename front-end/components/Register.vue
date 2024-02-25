@@ -24,12 +24,6 @@
           <input v-model="credentials.name" id="name" name="name" type="text" placeholder="Name" required
                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
         </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="aboutMe">About Me (max 255 characters)</label>
-          <textarea v-model="credentials.aboutMe" id="aboutMe" name="about-me" placeholder="Tell us about yourself..."
-                    required
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
-        </div>
         <button type="submit"
                 class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
           Register
