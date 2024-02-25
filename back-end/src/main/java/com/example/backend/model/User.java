@@ -31,7 +31,6 @@ public class User {
     private String password;
     private String name;
     private String email;
-    private String aboutMe;
     private String role;
     private Integer points;
 
@@ -50,7 +49,6 @@ public class User {
         this.password = password;
         this.name = name;
         this.email = email;
-        this.aboutMe = aboutMe;
         this.role = role;
         this.points = 0;
     }
