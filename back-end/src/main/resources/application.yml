@@ -1,6 +1,6 @@
+# Local setup
+
 #spring:
-#  profiles:
-#    active: production
 #  application:
 #    name: order-api
 #  jpa:
@@ -24,6 +24,7 @@
 #    org.springframework.security: DEBUG
 #
 
+#Production setup
 
 spring:
   application:
@@ -44,7 +45,7 @@ app:
     expiration:
       minutes: 10
   cors:
-    allowed-origins: http://localhost:3000, http://localhost:4200
+    allowed-origins: https://green-zone-app.netlify.app/
 
 logging:
   level:
