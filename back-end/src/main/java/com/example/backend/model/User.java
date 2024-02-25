@@ -1,47 +1,57 @@
 package com.example.backend.model;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Entity
-@Table(name="users")
 @NoArgsConstructor
-@AllArgsConstructor
+@Entity
+@Table(name = "users", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "username"),
+        @UniqueConstraint(columnNames = "email")
+})
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String username;
-    @Column(nullable = false, unique = true, length = 50)
-    private String email;
-    @Column(nullable = false, length = 50)
-    private String password;
-    private String aboutMeText;
 
-    @Column(columnDefinition = "integer default 0")
+    private String username;
+    private String password;
+    private String name;
+    private String email;
+    private String aboutMe;
+    private String role;
     private Integer points;
 
-    public User(String name) {
-        this.username = name;
-    }
 
-    public User(String username, String email, String password, String aboutMeText) {
+    public User(String username, String password, String name, String email, String role) {
         this.username = username;
-        this.email = email;
         this.password = password;
-        this.aboutMeText = aboutMeText;
+        this.name = name;
+        this.email = email;
+        this.role = role;
         this.points = 0;
     }
 
-    public User(String username, String email, String password) {
+    public User(String username, String password, String name, String email, String aboutMe, String role) {
         this.username = username;
-        this.email = email;
         this.password = password;
+        this.name = name;
+        this.email = email;
+        this.aboutMe = aboutMe;
+        this.role = role;
         this.points = 0;
     }
 }
