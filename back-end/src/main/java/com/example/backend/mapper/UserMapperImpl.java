@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class UserMapperImpl implements UserMapper {
-
     @Override
     public UserDto toUserDto(User user) {
         if (user == null) {

@@ -60,14 +60,11 @@ public class AuthController {
 
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response) {
-        // Clear the security context
         new SecurityContextLogoutHandler().logout(request, null, null);
         System.out.println("Cleared security context");
 
-        // Respond with a success message
         return ResponseEntity.ok().body("Logout successful");
     }
-
 
 
     private String authenticateAndGetToken(String username, String password) {
