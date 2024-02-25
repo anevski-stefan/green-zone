@@ -23,6 +23,5 @@ public class SignUpRequest {
     @Schema(example = "user3@mycompany.com")
     @Email
     private String email;
-    @Schema(example = "0")
-    private Integer points;
+    private Integer points = 0;
 }
