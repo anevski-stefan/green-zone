@@ -40,11 +40,10 @@ export default {
   data() {
     return {
       credentials: {
+        name: '',
         username: '',
         email: '',
         password: '',
-        name: '',
-        aboutMe: ''
       },
       errorMessage: ''
     };
