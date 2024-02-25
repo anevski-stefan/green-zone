@@ -93,7 +93,8 @@ const logout = async () => {
   try {
     const accessToken = getCookie('accessToken');
 
-    const response = await fetch('http://localhost:8080/auth/logout', {
+    // const response = await fetch('http://localhost:8080/auth/logout', { // Local
+    const response = await fetch('https://green-zone-api.onrender.com/auth/logout', {
       method: 'POST',
       credentials: 'same-origin',
       headers: {
