@@ -13,9 +13,9 @@
             <p class="text-sm text-gray-600">Points: {{ user.points }}</p>
           </div>
         </div>
-        <div class="mt-6" v-if="user.aboutMeText">
+        <div class="mt-6" v-if="user.aboutMe">
           <h2 class="text-lg font-semibold mb-2">About me:</h2>
-          <p class="text-sm text-gray-700">{{ user.aboutMeText }}</p>
+          <p class="text-sm text-gray-700">{{ user.aboutMe }}</p>
         </div>
         <div class="mt-6" v-else>
           <p class="text-sm text-gray-700">No bio available</p>
@@ -25,7 +25,6 @@
     <div v-else class="flex justify-center items-center mt-[-50vh]">
       <p class="text-xl font-semibold">Loading...</p>
     </div>
-
   </div>
 </template>
 
@@ -39,16 +38,43 @@ export default {
       loading: true
     };
   },
+  beforeRouteEnter(to, from, next) {
+    const userCookie = this.getCookie('user');
+    if (userCookie) {
+      next();
+    } else {
+      next({ path: '/login' });
+    }
+  },
   mounted() {
-    axios.get('http://localhost:8080/users/user/1')
-        .then(response => {
-          this.user = response.data;
-          this.loading = false; // Set loading to false when data is loaded
-          console.log("User: ", response.data)
-        })
-        .catch(error => {
-          console.error('Error fetching user data:', error);
-        });
+    const userCookie = this.getCookie('user');
+    if (userCookie) {
+      this.user = JSON.parse(userCookie);
+      this.loading = false;
+    }
+  },
+  methods: {
+    getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    },
+    async logout() {
+      try {
+        // Clear access token cookie
+        document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+        // Clear user cookie
+        document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+        // Redirect to the login page or any desired route
+        this.$router.push('/login');
+        window.location.reload();
+      } catch (error) {
+        console.error('Logout failed:', error);
+        // Handle logout failure if needed
+      }
+    }
   }
 };
 </script>
